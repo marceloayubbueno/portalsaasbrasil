@@ -167,13 +167,13 @@ export default function SaasPerfilPage() {
   const handleSubmit = async () => {
     setLoading(true)
     try {
-      const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token')
       const res = await fetch(`${config.apiUrl}/saas-companies/me`, {
-        method: 'PUT',
-        headers: { 
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
         body: JSON.stringify({ ...formData, status: 'pendente' })
       })
 
@@ -268,8 +268,8 @@ export default function SaasPerfilPage() {
                 const Icon = step.icon
                 const isActive = currentStep === step.num
                 const isCompleted = currentStep > step.num
-                
-                return (
+
+  return (
                   <div key={step.num} className="flex items-center">
                     <div className={`
                       flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300
@@ -710,8 +710,8 @@ export default function SaasPerfilPage() {
                       <Users className="w-4 h-4 text-purple-600" />
                       Público-Alvo
                     </label>
-                    <input
-                      type="text"
+        <input
+          type="text"
                       value={formData.targetAudience}
                       onChange={(e) => updateField('targetAudience', e.target.value)}
                       className="w-full px-4 py-2.5 rounded-lg border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all text-sm bg-white"
@@ -724,7 +724,7 @@ export default function SaasPerfilPage() {
                       <Award className="w-4 h-4 text-orange-600" />
                       Problemas que Resolve
                     </label>
-                    <textarea
+        <textarea
                       value={formData.problemsSolved}
                       onChange={(e) => updateField('problemsSolved', e.target.value)}
                       rows={3}
@@ -905,8 +905,8 @@ export default function SaasPerfilPage() {
                                 onChange={(e) => updateFounder(founder.id, 'linkedin', e.target.value)}
                                 className="flex-1 px-3 py-2 rounded-lg border-2 border-gray-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100 transition-all text-sm bg-white"
                                 placeholder="LinkedIn URL"
-                              />
-                              <button
+        />
+        <button
                                 type="button"
                                 onClick={() => removeFounder(founder.id)}
                                 className="px-3 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg transition-all"
@@ -1114,7 +1114,7 @@ export default function SaasPerfilPage() {
                     <span>Salvar Perfil</span>
                   </>
                 )}
-              </button>
+        </button>
             )}
           </div>
         </div>
