@@ -84,8 +84,9 @@ async function bootstrap() {
   console.log(`[BOOT] 🛣️ - Arquivos estáticos servidos de: ${clientPath} e ${publicPath}`);
   
   // Configuração global de validação
+  // TEMPORARIAMENTE DESABILITADO whitelist para debug
   app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
+    whitelist: false, // Desabilitado temporariamente para permitir dados sem decoradores
     transform: true,
   }));
 
@@ -99,10 +100,12 @@ async function bootstrap() {
       'https://virallead.com.br',
       'https://lp.virallead.com.br',
       'http://localhost:3000',
+      'http://localhost:3001',
       'http://localhost:5000',
       'http://localhost:5501',
       'http://localhost:8080',
       'http://127.0.0.1:3000',
+      'http://127.0.0.1:3001',
       'http://127.0.0.1:5000',
       'http://127.0.0.1:5501',
       'http://127.0.0.1:8080',

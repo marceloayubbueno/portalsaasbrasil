@@ -1,1 +1,0 @@
-// Arquivo removido: campaign.entity.ts não é mais utilizado (TypeORM removido, padronização para Mongoose) 

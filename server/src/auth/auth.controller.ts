@@ -1,14 +1,12 @@
 import { Controller, Post, Body, HttpCode, HttpStatus, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
-import { ClientsService } from '../clients/clients.service';
 import { SuperAdminSeedService } from '../admins/seed-superadmin';
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-    private readonly clientsService: ClientsService,
     private readonly superAdminSeedService: SuperAdminSeedService
   ) {}
 
@@ -24,23 +22,11 @@ export class AuthController {
     return this.authService.bootstrapFirstAdmin(createAdminDto);
   }
 
-  @Post('client-login')
+
+  @Post('saas-login')
   @HttpCode(HttpStatus.OK)
-  async clientLogin(@Body() loginDto: LoginDto) {
-    // 🚀 NOVO: Login para clientes com JWT que inclui clientId
-    try {
-      const result = await this.clientsService.login(loginDto.email, loginDto.password);
-      return {
-        success: true,
-        ...result,
-        message: 'Login realizado com sucesso'
-      };
-    } catch (error) {
-      return {
-        success: false,
-        message: error.message
-      };
-    }
+  async saasLogin(@Body() loginDto: LoginDto) {
+    return this.authService.loginSaas(loginDto);
   }
 
   @Get('admins')

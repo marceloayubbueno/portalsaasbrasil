@@ -1,44 +1,11 @@
 {
-  "builds": [
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "rewrites": [
     {
-      "src": "client/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/indicacao/(.*)",
-      "dest": "https://programa-indicacao-multicliente-production.up.railway.app/indicacao/$1",
-      "headers": {
-        "X-Forwarded-Host": "app.virallead.com.br",
-        "X-Forwarded-Proto": "https",
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
-    },
-    {
-      "src": "/indicacao",
-      "dest": "https://programa-indicacao-multicliente-production.up.railway.app/indicacao",
-      "headers": {
-        "X-Forwarded-Host": "app.virallead.com.br",
-        "X-Forwarded-Proto": "https",
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "https://programa-indicacao-multicliente-production.up.railway.app/api/$1",
-      "headers": {
-        "X-Forwarded-Host": "app.virallead.com.br",
-        "X-Forwarded-Proto": "https"
-      }
-    },
-    {
-      "src": "/client/(.*)",
-      "dest": "/client/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/$1"
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
-} 
+}

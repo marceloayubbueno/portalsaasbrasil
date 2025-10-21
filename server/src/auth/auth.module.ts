@@ -4,12 +4,11 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { JwtClientStrategy } from './strategies/jwt-client.strategy';
+import { JwtSaasStrategy } from './strategies/jwt-saas.strategy';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsuarioAdmin, UsuarioAdminSchema } from '../admins/entities/usuario-admin.schema';
-import { Client, ClientSchema } from '../clients/entities/client.schema';
-import { ClientsModule } from '../clients/clients.module'; // 🚀 NOVO: Import do ClientsModule
-import { AdminsModule } from '../admins/admins.module'; // 🚀 NOVO: Import do AdminsModule para SuperAdminSeedService
+import { SaasCompany, SaasCompanySchema } from '../products/entities/product.schema';
+import { AdminsModule } from '../admins/admins.module';
 
 @Module({
   imports: [
@@ -20,13 +19,12 @@ import { AdminsModule } from '../admins/admins.module'; // 🚀 NOVO: Import do 
     }),
     MongooseModule.forFeature([
       { name: UsuarioAdmin.name, schema: UsuarioAdminSchema },
-      { name: Client.name, schema: ClientSchema },
+      { name: SaasCompany.name, schema: SaasCompanySchema },
     ]),
-    ClientsModule, // 🚀 NOVO: Importar ClientsModule para usar ClientsService
-    AdminsModule, // 🚀 NOVO: Importar AdminsModule para usar SuperAdminSeedService
+    AdminsModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, JwtClientStrategy],
+  providers: [AuthService, JwtStrategy, JwtSaasStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}

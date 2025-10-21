@@ -1,55 +1,34 @@
-# Dependências
-node_modules/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Documentação (não expor)
-docs/
-
-# Arquivos de deploy e credenciais (CRÍTICO - NÃO COMMITAR)
-docs/deploy-credentials.md
-deploy-credentials.md
-*.credentials.md
-**/deploy-credentials.md
-**/*.credentials.md
-
-# Arquivos de backup e dados sensíveis
-*.sql
-*.dump
-backup/
-dumps/
-
-# Variáveis de ambiente
+# local env files
+.env*.local
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-# Logs
-logs
-*.log
+# vercel
+.vercel
 
-# Diretórios de cache
-.cache/
-.temp/
-
-# Arquivos do sistema
-.DS_Store
-Thumbs.db
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Build outputs
-dist/
-build/
-*.tgz
-
-# Backup files
-*.backup
-*.bak 
+# typescript
+*.tsbuildinfo
+next-env.d.ts
