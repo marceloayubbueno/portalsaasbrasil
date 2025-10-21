@@ -1,21 +1,21 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Product, ProductDocument } from './entities/product.schema';
+import { SaasCompany, SaasCompanyDocument } from './entities/product.schema';
 import { CreateProductDto } from './dto/create-product.dto';
 
 @Injectable()
 export class ProductsService {
   constructor(
-    @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+    @InjectModel(SaasCompany.name) private productModel: Model<SaasCompanyDocument>,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
+  async create(createProductDto: CreateProductDto): Promise<SaasCompany> {
     const created = new this.productModel(createProductDto);
     return created.save();
   }
 
-  async findAll(filters?: any): Promise<Product[]> {
+  async findAll(filters?: any): Promise<SaasCompany[]> {
     const query: any = {};
     
     if (filters?.category) {
@@ -33,7 +33,7 @@ export class ProductsService {
     return this.productModel.find(query).populate('category').sort({ createdAt: -1 }).exec();
   }
 
-  async findOne(id: string): Promise<Product> {
+  async findOne(id: string): Promise<SaasCompany> {
     const product = await this.productModel.findById(id).populate('category').exec();
     if (!product) {
       throw new NotFoundException('Produto não encontrado');
@@ -41,7 +41,7 @@ export class ProductsService {
     return product;
   }
 
-  async findBySlug(slug: string): Promise<Product> {
+  async findBySlug(slug: string): Promise<SaasCompany> {
     const product = await this.productModel.findOne({ slug }).populate('category').exec();
     if (!product) {
       throw new NotFoundException('Produto não encontrado');
@@ -49,7 +49,7 @@ export class ProductsService {
     return product;
   }
 
-  async update(id: string, updateData: Partial<CreateProductDto>): Promise<Product> {
+  async update(id: string, updateData: Partial<CreateProductDto>): Promise<SaasCompany> {
     const updated = await this.productModel
       .findByIdAndUpdate(id, { ...updateData, updatedAt: new Date() }, { new: true })
       .exec();
@@ -67,7 +67,7 @@ export class ProductsService {
     }
   }
 
-  async search(query: string): Promise<Product[]> {
+  async search(query: string): Promise<SaasCompany[]> {
     return this.productModel
       .find({ $text: { $search: query } })
       .populate('category')

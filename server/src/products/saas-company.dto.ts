@@ -15,6 +15,11 @@ export class CreateSaasCompanyDto {
   logo?: string;
   status?: string;
   
+  // Autenticação
+  @IsOptional()
+  @IsString()
+  password?: string;
+  
   // Informações de Contato
   email?: string;
   phone?: string;
