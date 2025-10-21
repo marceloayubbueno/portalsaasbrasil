@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Plus, Edit, Trash } from 'lucide-react'
+import { Plus, Edit, Trash, CheckCircle } from 'lucide-react'
+import { config } from '@/lib/config'
 
 export default function AdminSaasPage() {
   const [companies, setCompanies] = useState([])
@@ -14,7 +15,7 @@ export default function AdminSaasPage() {
 
   const loadCompanies = async () => {
     try {
-      const res = await fetch('http://localhost:3001/saas-companies')
+      const res = await fetch(`${config.apiUrl}/saas-companies`)
       if (res.ok) {
         const data = await res.json()
         // A API retorna { companies: [...] } ou array direto
@@ -26,6 +27,28 @@ export default function AdminSaasPage() {
       setCompanies([]) // Garantir que seja array vazio em caso de erro
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleActivate = async (id: string) => {
+    if (!confirm('Ativar esta empresa SAAS?')) return
+    
+    try {
+      const res = await fetch(`${config.apiUrl}/saas-companies/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'ativo' })
+      })
+      
+      if (res.ok) {
+        alert('✅ Empresa ativada com sucesso!')
+        loadCompanies()
+      } else {
+        alert('❌ Erro ao ativar empresa')
+      }
+    } catch (error) {
+      console.error('Erro:', error)
+      alert('❌ Erro ao ativar empresa')
     }
   }
 
@@ -84,12 +107,21 @@ export default function AdminSaasPage() {
                   </td>
                   <td className="p-4">
                     <div className="flex gap-2">
+                      {company.status === 'pendente' && (
+                        <button 
+                          onClick={() => handleActivate(company._id)}
+                          className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                          title="Ativar empresa"
+                        >
+                          <CheckCircle className="w-4 h-4" />
+                        </button>
+                      )}
                       <Link href={`/admin/saas/edit/${company._id}`}>
-                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Editar">
                           <Edit className="w-4 h-4" />
                         </button>
                       </Link>
-                      <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                      <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
                         <Trash className="w-4 h-4" />
                       </button>
                     </div>

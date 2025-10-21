@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Mail, Lock, AlertCircle, Rocket, ArrowRight, Sparkles } from 'lucide-react'
+import { config } from '@/lib/config'
 
 export default function SaasLoginPage() {
   const router = useRouter()
@@ -18,7 +19,7 @@ export default function SaasLoginPage() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:3001/auth/saas-login', {
+      const res = await fetch(`${config.apiUrl}/auth/saas-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

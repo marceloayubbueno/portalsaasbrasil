@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, Mail, Lock, AlertCircle, CheckCircle, Rocket, ArrowRight, Sparkles } from 'lucide-react'
+import { config } from '@/lib/config'
 
 export default function SaasCadastroPage() {
   const router = useRouter()
@@ -38,7 +39,7 @@ export default function SaasCadastroPage() {
     try {
       const slug = formData.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
       
-      const res = await fetch('http://localhost:3001/saas-companies', {
+      const res = await fetch(`${config.apiUrl}/saas-companies`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -57,7 +58,7 @@ export default function SaasCadastroPage() {
         setSuccess(true)
         
         // Fazer login automático
-        const loginRes = await fetch('http://localhost:3001/auth/saas-login', {
+        const loginRes = await fetch(`${config.apiUrl}/auth/saas-login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 

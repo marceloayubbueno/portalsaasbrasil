@@ -119,9 +119,8 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
     
     return {
-      success: true,
-      token,
-      saasCompany: {
+      access_token: token,
+      user: {
         id: saasCompany._id,
         name: saasCompany.name,
         slug: saasCompany.slug,

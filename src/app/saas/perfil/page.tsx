@@ -9,6 +9,7 @@ import {
   Rocket, Briefcase, Award, Calendar, X, Plus, Sparkles,
   AlertCircle, CheckCircle2, Clock
 } from 'lucide-react'
+import { config } from '@/lib/config'
 
 type FocusType = 'lead-generation' | 'investment-seeking' | 'both'
 
@@ -107,7 +108,7 @@ export default function SaasPerfilPage() {
   const loadProfile = async () => {
     try {
       const token = localStorage.getItem('token')
-      const res = await fetch('http://localhost:3001/saas-companies/me', {
+      const res = await fetch(`${config.apiUrl}/saas-companies/me`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       if (res.ok) {
@@ -167,7 +168,7 @@ export default function SaasPerfilPage() {
     setLoading(true)
     try {
       const token = localStorage.getItem('token')
-      const res = await fetch('http://localhost:3001/saas-companies/me', {
+      const res = await fetch(`${config.apiUrl}/saas-companies/me`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

@@ -21,6 +21,12 @@ export class SaasCompaniesService {
       throw new Error('Dados da empresa não foram recebidos corretamente');
     }
 
+    // Hash da senha se vier no DTO
+    if (createSaasCompanyDto.password) {
+      console.log('🔐 Hasheando senha...');
+      createSaasCompanyDto.password = await bcrypt.hash(createSaasCompanyDto.password, 10);
+    }
+
     // Gerar slug único baseado no nome
     let baseSlug = createSaasCompanyDto.name
       .toLowerCase()

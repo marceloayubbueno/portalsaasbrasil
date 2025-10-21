@@ -10,6 +10,7 @@ import {
   Rocket, Briefcase, Award, Calendar, X, Plus, Sparkles,
   AlertCircle, CheckCircle2, Clock
 } from 'lucide-react'
+import { config } from '@/lib/config'
 
 type FocusType = 'lead-generation' | 'investment-seeking' | 'both'
 
@@ -136,7 +137,7 @@ export default function NewSaasPage() {
   const handleSubmit = async () => {
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:3001/saas-companies', {
+      const res = await fetch(`${config.apiUrl}/saas-companies`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
