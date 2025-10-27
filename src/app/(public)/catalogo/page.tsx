@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { config } from '@/lib/config'
 
 interface SaasCompany {
   _id: string
@@ -17,6 +18,7 @@ interface SaasCompany {
   status: string
   focusType?: string
   views: number
+  createdAt?: string | Date
 }
 
 const CATEGORIES = [
@@ -43,7 +45,7 @@ export default function CatalogoPage() {
 
   const loadCompanies = async () => {
     try {
-      const res = await fetch('http://localhost:3001/saas-companies')
+      const res = await fetch(`${config.apiUrl}/saas-companies`)
       if (res.ok) {
         const result = await res.json()
         const data = result.companies || result

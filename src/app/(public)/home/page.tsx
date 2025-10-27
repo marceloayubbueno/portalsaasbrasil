@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { config } from '@/lib/config'
 
 interface SaasCompany {
   _id: string
@@ -15,6 +16,9 @@ interface SaasCompany {
   pricing: string
   featured: boolean
   logo?: string
+  status?: string
+  focusType?: string
+  views?: number
 }
 
 export default function Home() {
@@ -31,7 +35,7 @@ export default function Home() {
 
   const loadSaasCompanies = async () => {
     try {
-      const res = await fetch('http://localhost:3001/saas-companies')
+      const res = await fetch(`${config.apiUrl}/saas-companies`)
       if (res.ok) {
         const result = await res.json()
         const data = result.companies || result // Suporta { companies: [] } ou array direto
@@ -39,7 +43,7 @@ export default function Home() {
         // Filtrar: status ativo + lead generation + ordenar por views
         const featured = data
           .filter((s: SaasCompany) => s.status === 'ativo' && (s.focusType === 'lead-generation' || s.focusType === 'both'))
-          .sort((a: SaasCompany, b: SaasCompany) => b.views - a.views)
+          .sort((a: SaasCompany, b: SaasCompany) => (b.views || 0) - (a.views || 0))
           .slice(0, 12)
         setFeaturedSaas(featured)
         

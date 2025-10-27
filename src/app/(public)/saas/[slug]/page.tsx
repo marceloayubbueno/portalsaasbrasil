@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Star, Globe, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook, Users, TrendingUp, Calendar, Award, ArrowLeft } from 'lucide-react'
+import { config } from '@/lib/config'
 
 export default function SaasDetailPage() {
   const params = useParams()
@@ -28,7 +29,7 @@ export default function SaasDetailPage() {
 
   const loadCompany = async () => {
     try {
-      const res = await fetch(`http://localhost:3001/saas-companies/slug/${slug}`)
+      const res = await fetch(`${config.apiUrl}/saas-companies/slug/${slug}`)
       if (res.ok) {
         const data = await res.json()
         setCompany(data)
@@ -42,7 +43,7 @@ export default function SaasDetailPage() {
 
   const incrementViews = async () => {
     try {
-      await fetch(`http://localhost:3001/saas-companies/slug/${slug}/view`, {
+      await fetch(`${config.apiUrl}/saas-companies/slug/${slug}/view`, {
         method: 'PUT'
       })
     } catch (error) {
