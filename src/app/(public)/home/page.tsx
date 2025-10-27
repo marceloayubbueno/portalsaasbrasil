@@ -99,11 +99,11 @@ export default function Home() {
                   resultados reais
                 </span>
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed mb-2">
                 Imagine um cenário onde seus maiores desafios são resolvidos antes de se tornarem problemas.
                 Conectamos sua empresa às <strong>soluções SAAS</strong> que impulsionam crescimento com eficiência e inovação.
               </p>
-              <Link href="/saas">
+              <Link href="/saas" className="inline-block">
                 <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium py-4 px-8 rounded-xl text-lg shadow-xl transition-all duration-300 flex items-center gap-3">
                   Explorar Soluções SAAS
                   <ArrowRight className="w-5 h-5" />
