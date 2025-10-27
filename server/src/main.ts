@@ -56,7 +56,7 @@ async function bootstrap() {
   }
   
   // ✅ SERVIR ARQUIVOS ESTÁTICOS - CONFIGURAÇÃO EXPLÍCITA
-  const clientPath = join(__dirname, '..', '..', 'client');
+  const clientPath = join(__dirname, '..', 'client');
   console.log(`[BOOT] 🔧 Servindo arquivos estáticos de: ${clientPath}`);
   // Servir arquivos estáticos com prefixo explícito
   app.useStaticAssets(clientPath, {
@@ -67,7 +67,7 @@ async function bootstrap() {
   });
 
   // NOVO: Servir arquivos estáticos da pasta public na raiz
-  const publicPath = join(__dirname, '..', 'public');
+  const publicPath = join(__dirname, '..', '..', 'public');
   console.log(`[BOOT] 🔧 Servindo arquivos estáticos PUBLIC de: ${publicPath}`);
   app.useStaticAssets(publicPath, {
     prefix: '/', // Serve arquivos de public/ na raiz
