@@ -97,6 +97,8 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://portalsaasbrasil.vercel.app',
+      'https://portalsaasbrasil.onrender.com',
+      'https://portal-saas-backend.onrender.com',
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:5000',
