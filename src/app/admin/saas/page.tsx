@@ -6,7 +6,7 @@ import { Plus, Edit, Trash, CheckCircle } from 'lucide-react'
 import { config } from '@/lib/config'
 
 export default function AdminSaasPage() {
-  const [companies, setCompanies] = useState([])
+  const [companies, setCompanies] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
