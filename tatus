@@ -1,0 +1,43 @@
+warning: in the working copy of 'src/app/admin/saas/page.tsx', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/src/app/admin/saas/page.tsx b/src/app/admin/saas/page.tsx[m
+[1mindex 081c074..03e3f17 100644[m
+[1m--- a/src/app/admin/saas/page.tsx[m
+[1m+++ b/src/app/admin/saas/page.tsx[m
+[36m@@ -57,10 +57,10 @@[m [mexport default function AdminSaasPage() {[m
+       <div className="flex items-center justify-between mb-6">[m
+         <h1 className="text-3xl font-bold text-gray-900">Empresas SAAS</h1>[m
+         <Link href="/admin/saas/new">[m
+[31m-          <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-blue-500/30">[m
+[32m+[m[32m          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-blue-500/30 cursor-pointer">[m
+             <Plus className="w-5 h-5" />[m
+             Nova Empresa[m
+[31m-          </button>[m
+[32m+[m[32m          </div>[m
+         </Link>[m
+       </div>[m
+ [m
+[36m@@ -72,10 +72,10 @@[m [mexport default function AdminSaasPage() {[m
+         <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm text-center">[m
+           <p className="text-gray-600 mb-4">Nenhuma empresa SAAS encontrada</p>[m
+           <Link href="/admin/saas/new">[m
+[31m-            <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto shadow-lg shadow-blue-500/30">[m
+[32m+[m[32m            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto shadow-lg shadow-blue-500/30 cursor-pointer">[m
+               <Plus className="w-5 h-5" />[m
+               Adicionar Primeira Empresa[m
+[31m-            </button>[m
+[32m+[m[32m            </div>[m
+           </Link>[m
+         </div>[m
+       ) : ([m
+[36m@@ -117,9 +117,9 @@[m [mexport default function AdminSaasPage() {[m
+                         </button>[m
+                       )}[m
+                       <Link href={`/admin/saas/edit/${company._id}`}>[m
+[31m-                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Editar">[m
+[32m+[m[32m                        <div className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer" title="Editar">[m
+                           <Edit className="w-4 h-4" />[m
+[31m-                        </button>[m
+[32m+[m[32m                        </div>[m
+                       </Link>[m
+                       <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">[m
+                         <Trash className="w-4 h-4" />[m

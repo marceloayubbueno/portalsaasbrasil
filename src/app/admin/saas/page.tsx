@@ -57,10 +57,10 @@ export default function AdminSaasPage() {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Empresas SAAS</h1>
         <Link href="/admin/saas/new">
-          <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-blue-500/30">
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-blue-500/30 cursor-pointer">
             <Plus className="w-5 h-5" />
             Nova Empresa
-          </button>
+          </div>
         </Link>
       </div>
 
@@ -72,10 +72,10 @@ export default function AdminSaasPage() {
         <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm text-center">
           <p className="text-gray-600 mb-4">Nenhuma empresa SAAS encontrada</p>
           <Link href="/admin/saas/new">
-            <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto shadow-lg shadow-blue-500/30">
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto shadow-lg shadow-blue-500/30 cursor-pointer">
               <Plus className="w-5 h-5" />
               Adicionar Primeira Empresa
-            </button>
+            </div>
           </Link>
         </div>
       ) : (
@@ -117,9 +117,9 @@ export default function AdminSaasPage() {
                         </button>
                       )}
                       <Link href={`/admin/saas/edit/${company._id}`}>
-                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Editar">
+                        <div className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer" title="Editar">
                           <Edit className="w-4 h-4" />
-                        </button>
+                        </div>
                       </Link>
                       <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
                         <Trash className="w-4 h-4" />

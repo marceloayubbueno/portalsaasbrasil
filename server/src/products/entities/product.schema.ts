@@ -163,6 +163,13 @@ export class SaasCompany {
 
   @Prop({ required: false })
   lastLogin?: Date;
+
+  // Campos para recuperação de senha
+  @Prop({ required: false, select: false })
+  passwordResetToken?: string;
+
+  @Prop({ required: false })
+  passwordResetExpires?: Date;
 }
 
 export const SaasCompanySchema = SchemaFactory.createForClass(SaasCompany);

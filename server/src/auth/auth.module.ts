@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsuarioAdmin, UsuarioAdminSchema } from '../admins/entities/usuario-admin.schema';
 import { SaasCompany, SaasCompanySchema } from '../products/entities/product.schema';
 import { AdminsModule } from '../admins/admins.module';
+import { MailModule } from '../common/mail.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AdminsModule } from '../admins/admins.module';
       { name: SaasCompany.name, schema: SaasCompanySchema },
     ]),
     AdminsModule,
+    MailModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, JwtSaasStrategy],

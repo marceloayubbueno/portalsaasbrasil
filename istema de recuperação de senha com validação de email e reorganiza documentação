@@ -1,0 +1,23 @@
+warning: in the working copy of 'server/src/auth/auth.controller.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server/src/auth/auth.module.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server/src/products/entities/product.schema.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/(public)/saas/login/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/saas/edit/[id]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/saas/new/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/saas/page.tsx', LF will be replaced by CRLF the next time Git touches it
+ docs/API-REFERENCE.md                              | 662 [31m---------------------[m
+ docs/Estrtura-de-pastas.md                         |  27 [31m-[m
+ docs/GUIA-IA-MANUTENCAO.md                         | 382 [31m------------[m
+ docs/GUIA-SETUP-RAPIDO.md                          | 167 [31m------[m
+ ...PLEMENTA\303\207\303\203O JWT MULTICLIENTE .md" | 295 [31m---------[m
+ docs/INDICE-FUNCIONALIDADES.md                     | 187 [31m------[m
+ docs/breefing                                      | 182 [31m------[m
+ docs/credenciais.md                                |  42 [31m--[m
+ server/src/auth/auth.controller.ts                 |  14 [32m+[m
+ server/src/auth/auth.module.ts                     |   2 [32m+[m
+ server/src/products/entities/product.schema.ts     |   7 [32m+[m
+ src/app/(public)/saas/login/page.tsx               |  10 [32m+[m[31m-[m
+ src/app/admin/saas/edit/[id]/page.tsx              |   4 [32m+[m[31m-[m
+ src/app/admin/saas/new/page.tsx                    |   4 [32m+[m[31m-[m
+ src/app/admin/saas/page.tsx                        |  12 [32m+[m[31m-[m
+ 15 files changed, 42 insertions(+), 1955 deletions(-)

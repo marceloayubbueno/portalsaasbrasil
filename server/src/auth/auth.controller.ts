@@ -48,4 +48,18 @@ export class AuthController {
 
     return this.superAdminSeedService.recreateSuperAdmin();
   }
+
+  // 📧 Endpoint para solicitar recuperação de senha
+  @Post('request-password-reset')
+  @HttpCode(HttpStatus.OK)
+  async requestPasswordReset(@Body() body: { email: string }) {
+    return this.authService.requestPasswordReset(body.email);
+  }
+
+  // 🔐 Endpoint para redefinir senha com token
+  @Post('reset-password')
+  @HttpCode(HttpStatus.OK)
+  async resetPassword(@Body() body: { token: string; newPassword: string }) {
+    return this.authService.resetPassword(body.token, body.newPassword);
+  }
 } 
